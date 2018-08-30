@@ -9,7 +9,11 @@ body {
   background: linear-gradient(110deg, #fc9d28 0%, #f28282 28%, #2989d8 66%, #1c418c 100%);
   min-height: 100vh;
 }
-
+.navbar{
+  background: linear-gradient(to right, #0dad82 12%,#e59f12 52%,#8b12e8 90%);
+  padding:5px 0 5px 3px;
+border: black 1px solid;
+}
 .container {
   padding: 25px calc((100% - 960px) / 2);
 }

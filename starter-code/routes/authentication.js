@@ -34,4 +34,11 @@ router.get('/logout', ensureLoggedIn('/login'), (req, res) => {
     res.redirect('/');
 });
 
+router.get('/new-post', ensureLoggedIn('/login'), (req, res) => {
+    res.render('new-post',{
+        user:req.user
+    })
+ 
+});
+
 module.exports = router;
