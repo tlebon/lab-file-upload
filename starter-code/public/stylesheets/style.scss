@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font: 16px 'Montserrat', Helvetica, Arial, sans-serif;
+    background: linear-gradient(110deg, #fc9d28 0%,#f28282 28%,#2989d8 66%,#1c418c 100%);
+    min-height: 100vh;
+}
+
+.container {
+    padding: 25px calc((100% - 960px) / 2);
+}
+
+.card {
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+a {
+    color: RGB(49, 186, 141);
+    text-decoration: none;
+    transition: 200ms all ease-in-out;
+
+    &::visited {
+        color: RGB(49, 186, 141);
+    }
+
+    &:hover {
+        color: RGBA(49, 186, 141, 0.7);
+    }
+}
+
+button {
+    outline: none;
+    background-color: RGB(49, 186, 141);
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    min-width: 100px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    transition: 200ms all ease-in-out;
+    transform-origin: 50% 50%;
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.list-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+input,
+textarea {
+    margin-top: 25px;
+    width: 200px;
+    border: 1px solid rgb(180, 180, 180);
+    padding: 5px 10px;
+}
+
+.go-btn {
+    margin-top: 50px;
+}
+
+.btn-delete {
+    background-color: red;
+}

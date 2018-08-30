@@ -13,6 +13,7 @@ const MongoStore         = require('connect-mongo')(session);
 const mongoose           = require('mongoose');
 const flash              = require('connect-flash');
 const hbs                = require('hbs')
+const fileUpload = require('express-fileupload')
 
 mongoose.connect('mongodb://localhost:27017/tumblr-lab-development');
 
@@ -72,20 +73,27 @@ passport.use('local-signup', new LocalStrategy(
                 const {
                   username,
                   email,
-                  password
+                  password,
                 } = req.body;
+                const{image}=req.files;
+                const path = `public/images/${image.name}`
                 const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+               image.mv(path,function(err){
+                if (err) return res.status(500).send(err)
                 const newUser = new User({
                   username,
                   email,
-                  password: hashPass
+                  password: hashPass,
+                  image
                 });
 
                 newUser.save((err) => {
                     if (err){ next(null, false, { message: newUser.errors }) }
                     return next(null, newUser);
                 });
-            }
+              })
+              }
+
         });
     });
 }));
@@ -98,6 +106,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
+
 
 const index = require('./routes/index');
 const authRoutes = require('./routes/authentication');
