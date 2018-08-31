@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('./models/user');
+const User = require('./models/User');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -16,7 +16,7 @@ const hbs = require('hbs')
 const fileUpload = require('express-fileupload')
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/tumblr-lab-development');
+mongoose.connect(config.MONGODB_URI,{useMongoClient:true});
 
 
 app.set('views', path.join(__dirname, 'views'));
